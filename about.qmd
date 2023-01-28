@@ -1,9 +1,12 @@
 ---
-title: "About"
+title: "About Me"
+image: profilepic.jpg
+about: 
+  template: trestles
 ---
 
-About this site
+I am Ben Rubin, website creator extraordinaire in training.
 
 ```{r}
-1 + 1
+
 ```
