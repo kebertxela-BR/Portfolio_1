@@ -8,6 +8,9 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+    right: 
+      - icon: linkedin 
+        href: https://www.linkedin.com/in/benjaminrubin64
   sidebar:
     style: "docked"
     search: true
