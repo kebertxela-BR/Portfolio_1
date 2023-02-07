@@ -13,11 +13,14 @@ website:
         href: https://www.linkedin.com/in/benjaminrubin64
   sidebar:
     style: "docked"
+    collapse-level: 1
     search: true
     contents:
       - section: "TidyTuesday"
         contents:
           - NYT_BestSellers.qmd
+      - section: "Projects"
+        contents: 
 
 format:
   html:
