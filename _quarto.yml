@@ -19,7 +19,7 @@ website:
       - section: "TidyTuesday"
         contents:
           - NYT_BestSellers.qmd
-          - Board_games.Rmd
+          - Board_games1.qmd
       - section: "Projects"
         contents: 
 
