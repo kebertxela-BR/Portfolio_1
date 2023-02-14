@@ -1,0 +1,111 @@
+---
+title: "Best Board Games"
+date: 2023-02-07
+output: html_output
+execute: 
+  echo: true
+  warning: false
+---
+
+# Best Board Games
+
+This data set comes from [BoardGameGeekReviews](https://www.kaggle.com/datasets/jvanelteren/boardgamegeek-reviews?select=2022-01-08.csv) on Kaggle
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(DT)
+library(gt)
+
+```
+
+```{r Load, include=FALSE}
+
+tt <- tt_load("2022-01-25")
+
+```
+
+# Wrangle
+
+```{r Wrangle}
+
+ratings=tt$ratings
+details=tt$details
+
+
+```
+
+```{r}
+best_ranked_games <- function(game_name = NULL, game_rank = rank) {
+
+    if (!is.null(game_name)) {
+
+        ratings <- ratings %>%
+
+            filter(name == game_name)
+
+    }
+
+    ratings %>%
+
+        top_n (-50, {
+
+            {
+
+                game_rank
+
+            }
+
+        }) %>%
+
+        arrange({
+
+            {
+
+                game_rank
+
+            }
+
+        }) %>%
+
+        select(name, image = thumbnail,rank, average,users_rated,year) %>%
+
+        gt() %>%
+
+        text_transform(locations = cells_body(vars(image)), fn = function(x) {
+
+            web_image(url = x, height = 50)
+
+        })
+
+}
+
+```
+
+# Tables
+
+```{r Visualize}
+
+best_ranked_games()
+  
+```
+
+# 
+
+```{r}
+top_50_details=ratings %>% 
+  arrange(rank) %>%
+  select(id,rank) %>% 
+  right_join(details,by=c("id"="id")) %>% 
+  top_n(-50,rank) %>% 
+  select(1:13,-description,-rank,-num)
+
+```
+
+```{r}
+datatable(top_50_details) %>% 
+  formatStyle(1:13,color="white")
+```
