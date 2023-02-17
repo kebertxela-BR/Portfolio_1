@@ -106,10 +106,19 @@ top_50_details=ratings %>%
 ```
 
 ```{r}
-datatable(top_50_details, options = list(
+callback <- c(
+  "$('#DataTables_Table_0_length select').css('color', '#fff');",
+  "$('#DataTables_Table_0_filter input').css('color', '#fff');"
+)
+
+
+datatable(top_50_details, callback=JS(callback), options = list(
   initComplete = JS(
     "function(settings, json) {",
     "$(this.api().table().header()).css({'background-color': '#222', 'color': '#fff'});",
+    "$(this.api().table().container()).css({'background-color': '#222', 'color': '#fff'})",
     "}"))) %>% 
   formatStyle(1:13,color="white")
+
+
 ```
