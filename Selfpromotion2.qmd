@@ -1,0 +1,81 @@
+---
+title: "Presentation of Ben"
+author: "Ben Rubin"
+date: 2023-02-18
+format:
+  revealjs:
+    multiplex: true
+    preview-links: true
+    theme: simple
+    scrollable: true
+    footer: "Data Science Skills"
+    html-math-method: katex
+    incremental: true
+    slide-number: c/t
+    transition: concave
+    code-fold: true
+    code-tools: true
+---
+```{r, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE,message = FALSE, echo=TRUE, comment = NA, prompt = FALSE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(DT)
+library(gt)
+library(ggiraph)
+library(ggimage)
+```
+
+
+```{r,include=FALSE}
+tt <- tt_load("2022-01-25")
+
+ratings=tt$ratings
+details=tt$details
+
+best_ranked_games <- function(game_name = NULL, game_rank = rank) {
+
+    if (!is.null(game_name)) {
+
+        ratings <- ratings %>%
+
+            filter(name == game_name)
+
+    }
+
+    ratings %>%
+
+        top_n (-50, {
+
+            {
+
+                game_rank
+
+            }
+
+        }) %>%
+
+        arrange({
+
+            {
+
+                game_rank
+
+            }
+
+        }) %>%
+
+        select(name, image = thumbnail,rank, average,users_rated,year) %>%
+
+        gt() %>%
+
+        text_transform(locations = cells_body(vars(image)), fn = function(x) {
+
+            web_image(url = x, height = 50)
+
+        })
+
+}
+
+```
