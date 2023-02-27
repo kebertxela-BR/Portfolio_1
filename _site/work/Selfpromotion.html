@@ -28,6 +28,70 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -319,6 +383,16 @@
       margin-right: 0; 
     }
   </style>
+  
+  <script src="../site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+  <link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+  <script src="../site_libs/datatables-binding-0.27/datatables.js"></script>
+  <script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <link href="../site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link href="../site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+  <script src="../site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+  <link href="../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+  <script src="../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -352,15 +426,771 @@ Ben Rubin
 <p>Here is a cool shiny app I made</p>
 
 <iframe height="500" width="100%" frameborder="no" src="https://oettj8-benjamin-rubin.shinyapps.io/freedom_index/"> </iframe>
-
 <p>This data comes from the V-Dem Dataset that contains the worlds most comprehensive and detailed democracy ratings. The ratings are based on expert knowledge ranging from low (0.00) to high (1.00).</p>
 </section>
 
 <section id="section-2" class="title-slide slide level1 center">
 <h1></h1>
 <p>Check out these tables on board games!</p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">best_ranked_games</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
 
+<div id="itlcmyrlgo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#itlcmyrlgo) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#itlcmyrlgo) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#itlcmyrlgo) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#itlcmyrlgo) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#itlcmyrlgo) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#itlcmyrlgo) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#itlcmyrlgo) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#itlcmyrlgo) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#itlcmyrlgo) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#itlcmyrlgo) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#itlcmyrlgo) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#itlcmyrlgo) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#itlcmyrlgo) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#itlcmyrlgo) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#itlcmyrlgo) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#itlcmyrlgo) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#itlcmyrlgo) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#itlcmyrlgo) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#itlcmyrlgo) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#itlcmyrlgo) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#itlcmyrlgo) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#itlcmyrlgo) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#itlcmyrlgo) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#itlcmyrlgo) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#itlcmyrlgo) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#itlcmyrlgo) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#itlcmyrlgo) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#itlcmyrlgo) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#itlcmyrlgo) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#itlcmyrlgo) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#itlcmyrlgo) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#itlcmyrlgo) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#itlcmyrlgo) .gt_left {
+  text-align: left;
+}
+
+:where(#itlcmyrlgo) .gt_center {
+  text-align: center;
+}
+
+:where(#itlcmyrlgo) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#itlcmyrlgo) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#itlcmyrlgo) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#itlcmyrlgo) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#itlcmyrlgo) .gt_super {
+  font-size: 65%;
+}
+
+:where(#itlcmyrlgo) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#itlcmyrlgo) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#itlcmyrlgo) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#itlcmyrlgo) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#itlcmyrlgo) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#itlcmyrlgo) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#itlcmyrlgo) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="name">name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="image">image</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="rank">rank</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="average">average</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="users_rated">users_rated</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="year">year</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="name" class="gt_row gt_left">Gloomhaven</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/sZYp_3BTDGjh2unaZfZmuA__micro/img/sQyh47ClBO3d5sxPm73hMvM-JV4=/fit-in/64x64/filters:strip_icc()/pic2437871.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">1</td>
+<td headers="average" class="gt_row gt_right">8.74</td>
+<td headers="users_rated" class="gt_row gt_right">47827</td>
+<td headers="year" class="gt_row gt_right">2017</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Pandemic Legacy: Season 1</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/-Qer2BBPG7qGGDu6KcVDIw__micro/img/n6-sXYD6XXZoqIxq4P6AG7VPCuA=/fit-in/64x64/filters:strip_icc()/pic2452831.png" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">2</td>
+<td headers="average" class="gt_row gt_right">8.59</td>
+<td headers="users_rated" class="gt_row gt_right">45041</td>
+<td headers="year" class="gt_row gt_right">2015</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Brass: Birmingham</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/x3zxjr-Vw5iU4yDPg70Jgw__micro/img/4Od3GYCiqptga0VbmyumPbJlBsU=/fit-in/64x64/filters:strip_icc()/pic3490053.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">3</td>
+<td headers="average" class="gt_row gt_right">8.66</td>
+<td headers="users_rated" class="gt_row gt_right">25484</td>
+<td headers="year" class="gt_row gt_right">2018</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Terraforming Mars</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__micro/img/LUkXZhd1TO80eCiXMD3-KfnzA6k=/fit-in/64x64/filters:strip_icc()/pic3536616.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">4</td>
+<td headers="average" class="gt_row gt_right">8.42</td>
+<td headers="users_rated" class="gt_row gt_right">74216</td>
+<td headers="year" class="gt_row gt_right">2016</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Twilight Imperium: Fourth Edition</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/_Ppn5lssO5OaildSE-FgFA__micro/img/2gymaKs35_2yj7eyyA6cYyVmd9c=/fit-in/64x64/filters:strip_icc()/pic3727516.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">5</td>
+<td headers="average" class="gt_row gt_right">8.68</td>
+<td headers="users_rated" class="gt_row gt_right">16025</td>
+<td headers="year" class="gt_row gt_right">2017</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Gloomhaven: Jaws of the Lion</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__micro/img/OdKjWiFsNvQAfJfXXSITttiozWE=/fit-in/64x64/filters:strip_icc()/pic5055631.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">6</td>
+<td headers="average" class="gt_row gt_right">8.68</td>
+<td headers="users_rated" class="gt_row gt_right">15918</td>
+<td headers="year" class="gt_row gt_right">2020</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Gaia Project</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/hGWFm3hbMlCDsfCsauOQ4g__micro/img/odWj2bEnZi9dEcQQrOtYj1e0QLE=/fit-in/64x64/filters:strip_icc()/pic5375625.png" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">7</td>
+<td headers="average" class="gt_row gt_right">8.47</td>
+<td headers="users_rated" class="gt_row gt_right">19169</td>
+<td headers="year" class="gt_row gt_right">2017</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Star Wars: Rebellion</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/7SrPNGBKg9IIsP4UQpOi8g__micro/img/nEvTiCkWpT-ymH4bstc9c335TtQ=/fit-in/64x64/filters:strip_icc()/pic4325841.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">8</td>
+<td headers="average" class="gt_row gt_right">8.42</td>
+<td headers="users_rated" class="gt_row gt_right">25586</td>
+<td headers="year" class="gt_row gt_right">2016</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Through the Ages: A New Story of Civilization</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/fVwPntkJKgaEo0rIC0RwpA__micro/img/77dZJpqtydc8TTecl0ReGF7iAVw=/fit-in/64x64/filters:strip_icc()/pic2663291.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">9</td>
+<td headers="average" class="gt_row gt_right">8.38</td>
+<td headers="users_rated" class="gt_row gt_right">25605</td>
+<td headers="year" class="gt_row gt_right">2015</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">War of the Ring: Second Edition</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/ImPgGag98W6gpV1KV812aA__micro/img/NT-Av_3kdYUcwuti5ocmIQXow3g=/fit-in/64x64/filters:strip_icc()/pic1215633.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">10</td>
+<td headers="average" class="gt_row gt_right">8.51</td>
+<td headers="users_rated" class="gt_row gt_right">15498</td>
+<td headers="year" class="gt_row gt_right">2012</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Spirit Island</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/a13ieMPP2s0KEaKNYmtH5w__micro/img/HQaHfx5cy6wJtZBMZCbVeNbfdy8=/fit-in/64x64/filters:strip_icc()/pic3615739.png" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">11</td>
+<td headers="average" class="gt_row gt_right">8.36</td>
+<td headers="users_rated" class="gt_row gt_right">32199</td>
+<td headers="year" class="gt_row gt_right">2017</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Great Western Trail</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/u1l0gH7sb_vnvDvoO_QHqA__micro/img/xeShpQfbj4L1id-ItJbfIYVzgyA=/fit-in/64x64/filters:strip_icc()/pic4887376.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">12</td>
+<td headers="average" class="gt_row gt_right">8.29</td>
+<td headers="users_rated" class="gt_row gt_right">32960</td>
+<td headers="year" class="gt_row gt_right">2016</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Twilight Struggle</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/pNCiUUphnoeWOYfsWq0kng__micro/img/ZlfJiIATIt5MY7xWSMzFmdygaa0=/fit-in/64x64/filters:strip_icc()/pic3530661.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">13</td>
+<td headers="average" class="gt_row gt_right">8.28</td>
+<td headers="users_rated" class="gt_row gt_right">43052</td>
+<td headers="year" class="gt_row gt_right">2005</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Scythe</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__micro/img/ETplc22GdhlN5u0mppcDxSP8LVk=/fit-in/64x64/filters:strip_icc()/pic3163924.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">14</td>
+<td headers="average" class="gt_row gt_right">8.22</td>
+<td headers="users_rated" class="gt_row gt_right">64569</td>
+<td headers="year" class="gt_row gt_right">2016</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">The Castles of Burgundy</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/5CFwjd8zTcGYVUnkXh04hw__micro/img/N1VrEUaW6bmwnqbZfi2nRScwGxM=/fit-in/64x64/filters:strip_icc()/pic1176894.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">15</td>
+<td headers="average" class="gt_row gt_right">8.13</td>
+<td headers="users_rated" class="gt_row gt_right">50549</td>
+<td headers="year" class="gt_row gt_right">2011</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">7 Wonders Duel</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/WzNs1mA_o22ZWTR8fkLP2g__micro/img/xh3isprMbt_FCg9vs3w_ifv-JXY=/fit-in/64x64/filters:strip_icc()/pic3376065.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">16</td>
+<td headers="average" class="gt_row gt_right">8.11</td>
+<td headers="users_rated" class="gt_row gt_right">69472</td>
+<td headers="year" class="gt_row gt_right">2015</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Nemesis</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/tAqLpWxQ0Oo3GaPP3MER1g__micro/img/tivhH093LwCowK-_S7bVF_xha34=/fit-in/64x64/filters:strip_icc()/pic5073276.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">17</td>
+<td headers="average" class="gt_row gt_right">8.39</td>
+<td headers="users_rated" class="gt_row gt_right">17688</td>
+<td headers="year" class="gt_row gt_right">2018</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Terra Mystica</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/bre12I1YiXkZr7elvriz4A__micro/img/SAwaBrDhHbGuq6dFY-ok95qFMcU=/fit-in/64x64/filters:strip_icc()/pic5375624.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">18</td>
+<td headers="average" class="gt_row gt_right">8.12</td>
+<td headers="users_rated" class="gt_row gt_right">41806</td>
+<td headers="year" class="gt_row gt_right">2012</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Concordia</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/CzwSm8i7tkLz6cBnrILZBg__micro/img/FQyxREkHBn7yTbGmBg7c44eLgaM=/fit-in/64x64/filters:strip_icc()/pic3453267.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">19</td>
+<td headers="average" class="gt_row gt_right">8.12</td>
+<td headers="users_rated" class="gt_row gt_right">31519</td>
+<td headers="year" class="gt_row gt_right">2013</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Brass: Lancashire</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/0BsjJY9MTlx9DRrlkeE69w__micro/img/LzaNnOD21eoa3KYNXJ2kCrZZabM=/fit-in/64x64/filters:strip_icc()/pic5482020.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">20</td>
+<td headers="average" class="gt_row gt_right">8.18</td>
+<td headers="users_rated" class="gt_row gt_right">20915</td>
+<td headers="year" class="gt_row gt_right">2007</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Dune: Imperium</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/PhjygpWSo-0labGrPBMyyg__micro/img/mfU7-dEFnVyXJrF-BWAO0buexao=/fit-in/64x64/filters:strip_icc()/pic5666597.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">21</td>
+<td headers="average" class="gt_row gt_right">8.32</td>
+<td headers="users_rated" class="gt_row gt_right">14897</td>
+<td headers="year" class="gt_row gt_right">2020</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">A Feast for Odin</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/s9oGMCo1fcfV4Dk3EnqLZw__micro/img/JCrcuFDrjVQ64uLbqpH-Pmg6XsU=/fit-in/64x64/filters:strip_icc()/pic3146943.png" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">22</td>
+<td headers="average" class="gt_row gt_right">8.21</td>
+<td headers="users_rated" class="gt_row gt_right">20071</td>
+<td headers="year" class="gt_row gt_right">2016</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Wingspan</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/yLZJCVLlIx4c7eJEWUNJ7w__micro/img/5ZaRePVhfelfofF7T_OC1e0gUCw=/fit-in/64x64/filters:strip_icc()/pic4458123.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">23</td>
+<td headers="average" class="gt_row gt_right">8.10</td>
+<td headers="users_rated" class="gt_row gt_right">56079</td>
+<td headers="year" class="gt_row gt_right">2019</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Arkham Horror: The Card Game</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/RdCWCXPnBGSxoOhk5Hkq_g__micro/img/TVx3_34ywzwURntW1WMKBx6ZeCg=/fit-in/64x64/filters:strip_icc()/pic6530423.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">24</td>
+<td headers="average" class="gt_row gt_right">8.16</td>
+<td headers="users_rated" class="gt_row gt_right">33046</td>
+<td headers="year" class="gt_row gt_right">2016</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Viticulture Essential Edition</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/l_PRU2lVlX9seScRFcvFlA__micro/img/3EqHlTkNSnZNFHVaAeFSpzfzuIQ=/fit-in/64x64/filters:strip_icc()/pic6500949.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">25</td>
+<td headers="average" class="gt_row gt_right">8.06</td>
+<td headers="users_rated" class="gt_row gt_right">34760</td>
+<td headers="year" class="gt_row gt_right">2015</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Root</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/JUAUWaVUzeBgzirhZNmHHw__micro/img/tdHLiMYfi-KTy89sGBGZVeE9ts0=/fit-in/64x64/filters:strip_icc()/pic4254509.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">26</td>
+<td headers="average" class="gt_row gt_right">8.10</td>
+<td headers="users_rated" class="gt_row gt_right">31553</td>
+<td headers="year" class="gt_row gt_right">2018</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Orléans</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/nagl1li6kYt9elV9jbfVQw__micro/img/hUKCvnqgFvTl0aOMd8FLkgCObT0=/fit-in/64x64/filters:strip_icc()/pic6228507.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">27</td>
+<td headers="average" class="gt_row gt_right">8.07</td>
+<td headers="users_rated" class="gt_row gt_right">24601</td>
+<td headers="year" class="gt_row gt_right">2014</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Mage Knight Board Game</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/DUO2hz9AlLOH8p9ED-lCWg__micro/img/eXzdbUmCbIdMIVgiQ_QwS3YNOS4=/fit-in/64x64/filters:strip_icc()/pic1083380.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">28</td>
+<td headers="average" class="gt_row gt_right">8.10</td>
+<td headers="users_rated" class="gt_row gt_right">29404</td>
+<td headers="year" class="gt_row gt_right">2011</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Everdell</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/fjE7V5LNq31yVEW_yuqI-Q__micro/img/TAgkPCJdNAIHZfn1BE1DXadBL9g=/fit-in/64x64/filters:strip_icc()/pic3918905.png" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">29</td>
+<td headers="average" class="gt_row gt_right">8.10</td>
+<td headers="users_rated" class="gt_row gt_right">28986</td>
+<td headers="year" class="gt_row gt_right">2018</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Clank!: Legacy – Acquisitions Incorporated</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/hc2NDafu5c24iLJh_IZmyg__micro/img/v2WzacDprYF837E6h9O2WuFFmpw=/fit-in/64x64/filters:strip_icc()/pic4885780.png" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">30</td>
+<td headers="average" class="gt_row gt_right">8.70</td>
+<td headers="users_rated" class="gt_row gt_right">4935</td>
+<td headers="year" class="gt_row gt_right">2019</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Puerto Rico</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/QFiIRd2kimaMqTyWsX0aUg__micro/img/ggNIAA1GEadqvcY7Mvwb9_VEybU=/fit-in/64x64/filters:strip_icc()/pic158548.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">31</td>
+<td headers="average" class="gt_row gt_right">7.97</td>
+<td headers="users_rated" class="gt_row gt_right">65443</td>
+<td headers="year" class="gt_row gt_right">2002</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Food Chain Magnate</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/Wtxml94LAXsIWQCxGPS63Q__micro/img/4Oucoa190njfSaNHr8YRIl6UnTU=/fit-in/64x64/filters:strip_icc()/pic2649434.png" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">32</td>
+<td headers="average" class="gt_row gt_right">8.12</td>
+<td headers="users_rated" class="gt_row gt_right">15406</td>
+<td headers="year" class="gt_row gt_right">2015</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Caverna: The Cave Farmers</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/rz22tqa5PCYvK9oDjIbvxg__micro/img/sog7ni3vUAAfvd66e6XW4iOca4I=/fit-in/64x64/filters:strip_icc()/pic1790789.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">33</td>
+<td headers="average" class="gt_row gt_right">8.00</td>
+<td headers="users_rated" class="gt_row gt_right">29788</td>
+<td headers="year" class="gt_row gt_right">2013</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Lost Ruins of Arnak</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/6GqH14TJJhza86BX5HCLEQ__micro/img/2FKVaukjh9a-Kg9LWQuMSvLS34s=/fit-in/64x64/filters:strip_icc()/pic5674958.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">34</td>
+<td headers="average" class="gt_row gt_right">8.11</td>
+<td headers="users_rated" class="gt_row gt_right">16860</td>
+<td headers="year" class="gt_row gt_right">2020</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Blood Rage</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/HkZSJfQnZ3EpS214xtuplg__micro/img/7xdR1_OUo1ReAvYzhi7jBhFMHu0=/fit-in/64x64/filters:strip_icc()/pic2439223.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">35</td>
+<td headers="average" class="gt_row gt_right">7.99</td>
+<td headers="users_rated" class="gt_row gt_right">37561</td>
+<td headers="year" class="gt_row gt_right">2015</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Agricola</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/dDDo2Hexl80ucK1IlqTk-g__micro/img/SZgGqufNqaW8BCFT29wkYPaRXOE=/fit-in/64x64/filters:strip_icc()/pic831744.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">36</td>
+<td headers="average" class="gt_row gt_right">7.93</td>
+<td headers="users_rated" class="gt_row gt_right">66093</td>
+<td headers="year" class="gt_row gt_right">2007</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Marvel Champions: The Card Game</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/kRvUgYiaOq07kC67ZK5UoQ__micro/img/4DLQr45lpVBfCkiy-kVwhl4z4vQ=/fit-in/64x64/filters:strip_icc()/pic4900321.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">37</td>
+<td headers="average" class="gt_row gt_right">8.20</td>
+<td headers="users_rated" class="gt_row gt_right">14032</td>
+<td headers="year" class="gt_row gt_right">2019</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Eclipse: Second Dawn for the Galaxy</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/Oh3kHw6lweg6ru71Q16h2Q__micro/img/vhB59zFDq3Kul0xbr3api2selZs=/fit-in/64x64/filters:strip_icc()/pic5235277.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">38</td>
+<td headers="average" class="gt_row gt_right">8.68</td>
+<td headers="users_rated" class="gt_row gt_right">5373</td>
+<td headers="year" class="gt_row gt_right">2020</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Too Many Bones</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/-EB8c-OIEZfHi1p-8qwiUw__micro/img/SAF5djh8bsEPpeSvv9ynS1DCi1o=/fit-in/64x64/filters:strip_icc()/pic3684814.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">39</td>
+<td headers="average" class="gt_row gt_right">8.43</td>
+<td headers="users_rated" class="gt_row gt_right">7823</td>
+<td headers="year" class="gt_row gt_right">2017</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Maracaibo</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/rMNa0k05zMdKgSEp26Q3Tw__micro/img/rDI-yCgwVbB_szRjUWOY8IKIdUk=/fit-in/64x64/filters:strip_icc()/pic4917407.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">40</td>
+<td headers="average" class="gt_row gt_right">8.20</td>
+<td headers="users_rated" class="gt_row gt_right">10683</td>
+<td headers="year" class="gt_row gt_right">2019</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Mansions of Madness: Second Edition</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/LIooA9bTdjnE9qmhjL-UFw__micro/img/rsUu4YzIErI1oi6TRRA-cKiS-I0=/fit-in/64x64/filters:strip_icc()/pic3118622.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">41</td>
+<td headers="average" class="gt_row gt_right">8.02</td>
+<td headers="users_rated" class="gt_row gt_right">28516</td>
+<td headers="year" class="gt_row gt_right">2016</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Pandemic Legacy: Season 2</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/Qtkb-UTvHa0-kxt_MK1nKw__micro/img/eYV_Y45Hk66WceHroLlRqnHEHmg=/fit-in/64x64/filters:strip_icc()/pic3763549.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">42</td>
+<td headers="average" class="gt_row gt_right">8.11</td>
+<td headers="users_rated" class="gt_row gt_right">13644</td>
+<td headers="year" class="gt_row gt_right">2017</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">The Crew: The Quest for Planet Nine</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/98LnQShydr11OBKS46xY-Q__micro/img/bIVTqYzQ5wDuCSmcQvpNokXZOUo=/fit-in/64x64/filters:strip_icc()/pic5687013.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">43</td>
+<td headers="average" class="gt_row gt_right">7.97</td>
+<td headers="users_rated" class="gt_row gt_right">24972</td>
+<td headers="year" class="gt_row gt_right">2019</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Barrage</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/jEPmWvvYpqkWrKOzqIHFsg__micro/img/Uwm0ZfmY4ZNWWxlackDXrsmS-Io=/fit-in/64x64/filters:strip_icc()/pic4336469.png" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">44</td>
+<td headers="average" class="gt_row gt_right">8.22</td>
+<td headers="users_rated" class="gt_row gt_right">9444</td>
+<td headers="year" class="gt_row gt_right">2019</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Underwater Cities</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/PwOwTVHovJAUQgghnGqCOg__micro/img/9ftDcGDumAWKm_3hmu6JUwjb1aU=/fit-in/64x64/filters:strip_icc()/pic4837710.png" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">45</td>
+<td headers="average" class="gt_row gt_right">8.10</td>
+<td headers="users_rated" class="gt_row gt_right">12751</td>
+<td headers="year" class="gt_row gt_right">2018</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Anachrony</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/31quLNzteInnevVRAABoow__micro/img/CMEokoPk9cBV5A82_eBwjDJPMfE=/fit-in/64x64/filters:strip_icc()/pic3499707.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">46</td>
+<td headers="average" class="gt_row gt_right">8.11</td>
+<td headers="users_rated" class="gt_row gt_right">13318</td>
+<td headers="year" class="gt_row gt_right">2017</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Tzolk'in: The Mayan Calendar</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/kXf7mDyDYuHg6oe8yTUIEA__micro/img/3EqJtoxAlTb2pJWxmA7TUu4HWNI=/fit-in/64x64/filters:strip_icc()/pic4604439.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">47</td>
+<td headers="average" class="gt_row gt_right">7.89</td>
+<td headers="users_rated" class="gt_row gt_right">33207</td>
+<td headers="year" class="gt_row gt_right">2012</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Power Grid</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/yd6LuatytHRhcFCxCf-EEg__micro/img/ZUrGKfXAZS4AztFRXq2W9oD6TG4=/fit-in/64x64/filters:strip_icc()/pic4459753.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">48</td>
+<td headers="average" class="gt_row gt_right">7.84</td>
+<td headers="users_rated" class="gt_row gt_right">58602</td>
+<td headers="year" class="gt_row gt_right">2004</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Kingdom Death: Monster</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/LenzJBOHboAGU0cUIqAZPQ__micro/img/6YI32BDhyuO9JZrofc1CPbuFlVY=/fit-in/64x64/filters:strip_icc()/pic2931007.jpg" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">49</td>
+<td headers="average" class="gt_row gt_right">8.61</td>
+<td headers="users_rated" class="gt_row gt_right">8065</td>
+<td headers="year" class="gt_row gt_right">2015</td></tr>
+    <tr><td headers="name" class="gt_row gt_left">Pax Pamir: Second Edition</td>
+<td headers="image" class="gt_row gt_left"><img src="https://cf.geekdo-images.com/oSM_AuKYfGIwOtKbVEsoVg__micro/img/SKUliR88eoltB2ytmwz3BffW7aA=/fit-in/64x64/filters:strip_icc()/pic4503733.png" style="height:50px;"></td>
+<td headers="rank" class="gt_row gt_right">50</td>
+<td headers="average" class="gt_row gt_right">8.36</td>
+<td headers="users_rated" class="gt_row gt_right">6732</td>
+<td headers="year" class="gt_row gt_right">2019</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">datatable</span>(top_50_details, <span class="at">callback=</span><span class="fu">JS</span>(callback), <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="at">initComplete =</span> <span class="fu">JS</span>(</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="st">"function(settings, json) {"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="st">"$(this.api().table().header()).css({'background-color': '#222', 'color': '#fff'});"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="st">"$(this.api().table().container()).css({'background-color': '#222', 'color': '#fff'})"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="st">"}"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">formatStyle</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>,<span class="at">color=</span><span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-260e26126191558b755f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-260e26126191558b755f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50"],[174430,161936,224517,167791,233078,291457,220308,187645,182028,115746,162886,193738,12333,169786,84876,173346,167355,120677,124361,28720,316554,177736,266192,205637,183394,237182,164928,96848,199792,266507,3076,175914,102794,312484,170216,31260,285774,246900,192135,276025,205059,221107,284083,251247,247763,185343,126163,2651,55690,256960],[8.74,8.59,8.66,8.42,8.68,8.68,8.47,8.42,8.38,8.51,8.36,8.29,8.28,8.22,8.13,8.11,8.39,8.12,8.12,8.18,8.32,8.21,8.1,8.16,8.06,8.1,8.07,8.1,8.1,8.7,7.97,8.12,8,8.11,7.99,7.93,8.2,8.68,8.43,8.2,8.02,8.11,7.97,8.22,8.1,8.11,7.89,7.84,8.61,8.36],["Gloomhaven","Pandemic Legacy: Season 1","Brass: Birmingham","Terraforming Mars","Twilight Imperium: Fourth Edition","Gloomhaven: Jaws of the Lion","Gaia Project","Star Wars: Rebellion","Through the Ages: A New Story of Civilization","War of the Ring: Second Edition","Spirit Island","Great Western Trail","Twilight Struggle","Scythe","The Castles of Burgundy","7 Wonders Duel","Nemesis","Terra Mystica","Concordia","Brass: Lancashire","Dune: Imperium","A Feast for Odin","Wingspan","Arkham Horror: The Card Game","Viticulture Essential Edition","Root","Orléans","Mage Knight Board Game","Everdell","Clank!: Legacy – Acquisitions Incorporated","Puerto Rico","Food Chain Magnate","Caverna: The Cave Farmers","Lost Ruins of Arnak","Blood Rage","Agricola","Marvel Champions: The Card Game","Eclipse: Second Dawn for the Galaxy","Too Many Bones","Maracaibo","Mansions of Madness: Second Edition","Pandemic Legacy: Season 2","The Crew: The Quest for Planet Nine","Barrage","Underwater Cities","Anachrony","Tzolk'in: The Mayan Calendar","Power Grid","Kingdom Death: Monster","Pax Pamir: Second Edition"],[2017,2015,2018,2016,2017,2020,2017,2016,2015,2012,2017,2016,2005,2016,2011,2015,2018,2012,2013,2007,2020,2016,2019,2016,2015,2018,2014,2011,2018,2019,2002,2015,2013,2020,2015,2007,2019,2020,2017,2019,2016,2017,2019,2019,2018,2017,2012,2004,2015,2019],["1","2","2","1","3","1","1","2","2","2","1","2","2","1","2","2","1","2","2","2","1","1","1","1","1","2","2","1","1","2","3","2","1","1","2","1","1","2","1","1","1","2","2","1","1","1","2","2","1","1"],[4,4,4,5,6,4,4,4,4,4,4,4,2,5,4,2,5,5,5,4,4,4,5,2,6,4,4,4,4,4,5,5,7,4,4,5,4,6,4,4,5,4,5,4,4,4,4,6,4,5],[120,60,120,120,480,120,150,240,120,180,120,150,180,115,90,30,180,150,100,120,120,120,70,120,90,90,90,240,80,120,150,240,210,120,90,150,90,200,120,120,180,60,20,120,150,120,90,120,180,120],[60,60,60,120,240,30,60,180,120,150,90,75,120,90,30,30,90,60,100,60,60,30,40,60,45,60,90,60,40,90,90,120,30,30,60,30,45,60,60,30,120,60,20,60,80,30,90,120,60,45],[120,60,120,120,480,120,150,240,120,180,120,150,180,115,90,30,180,150,100,120,120,120,70,120,90,90,90,240,80,120,150,240,210,120,90,150,90,200,120,120,180,60,20,120,150,120,90,120,180,120],[14,13,14,12,14,14,12,14,14,13,13,12,13,14,12,10,12,12,13,14,14,12,10,14,13,10,12,14,13,13,12,14,12,12,14,12,14,14,12,12,14,14,10,14,12,15,13,12,17,13],[1.77815125038364,1.77815125038364,1.77815125038364,2.07918124604762,2.38021124171161,1.47712125471966,1.77815125038364,2.25527250510331,2.07918124604762,2.17609125905568,1.95424250943932,1.8750612633917,2.07918124604762,1.95424250943932,1.47712125471966,1.47712125471966,1.95424250943932,1.77815125038364,2,1.77815125038364,1.77815125038364,1.47712125471966,1.60205999132796,1.77815125038364,1.65321251377534,1.77815125038364,1.95424250943932,1.77815125038364,1.60205999132796,1.95424250943932,1.95424250943932,2.07918124604762,1.47712125471966,1.47712125471966,1.77815125038364,1.47712125471966,1.65321251377534,1.77815125038364,1.77815125038364,1.47712125471966,2.07918124604762,1.77815125038364,1.30102999566398,1.77815125038364,1.90308998699194,1.47712125471966,1.95424250943932,2.07918124604762,1.77815125038364,1.65321251377534]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>average<\/th>\n      <th>primary<\/th>\n      <th>yearpublished<\/th>\n      <th>minplayers<\/th>\n      <th>maxplayers<\/th>\n      <th>playingtime<\/th>\n      <th>minplaytime<\/th>\n      <th>maxplaytime<\/th>\n      <th>minage<\/th>\n      <th>logmin<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#222', 'color': '#fff'});\n$(this.api().table().container()).css({'background-color': '#222', 'color': '#fff'})\n}","columnDefs":[{"className":"dt-right","targets":[1,2,4,6,7,8,9,10,11]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'color':'white'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'color':'white'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'color':'white'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'color':'white'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'color':'white'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'color':'white'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'color':'white'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'color':'white'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'color':'white'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'color':'white'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'color':'white'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'color':'white'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'color':'white'});\n}"},"callback":"function(table) {\n$('#DataTables_Table_0_length select').css('color', '#fff');\n$('#DataTables_Table_0_filter input').css('color', '#fff');\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["options.initComplete","options.rowCallback","callback"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
 </div>
 
 <div class="footer footer-default">

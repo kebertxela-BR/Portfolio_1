@@ -110,7 +110,7 @@ knitr::opts_chunk$set(warning = FALSE,message = FALSE, echo=TRUE, comment = NA, 
 
 -   This presentation will show a few examples of Ben Rubin's skill in data science
 
-# Shiny App creation
+# 
 
 Here is a cool shiny app I made
 
@@ -120,19 +120,19 @@ Here is a cool shiny app I made
 ```
 This data comes from the V-Dem Dataset that contains the worlds most comprehensive and detailed democracy ratings. The ratings are based on expert knowledge ranging from low (0.00) to high (1.00).
 
-# Table creation
+# 
 
 Check out these tables on board games!
 
-:::: {.columns}
-:::{.column width="50%"}
+::: columns
+::: {.column width="50%"}
 ```{r}
 
 best_ranked_games()
 ```
-
 :::
-:::{.column width="50%"}
+
+::: {.column width="50%"}
 ```{r}
 
 datatable(top_50_details, callback=JS(callback), options = list(
@@ -143,8 +143,5 @@ datatable(top_50_details, callback=JS(callback), options = list(
     "}"))) %>% 
   formatStyle(1:13,color="white")
 ```
-
 :::
-::::
-
-#
+:::
