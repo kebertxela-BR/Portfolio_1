@@ -6,7 +6,7 @@ format:
   revealjs:
     multiplex: true
     preview-links: true
-    theme: simple
+    theme: moon
     scrollable: true
     footer: "Data Science Skills"
     html-math-method: katex
@@ -108,7 +108,7 @@ knitr::opts_chunk$set(warning = FALSE,message = FALSE, echo=TRUE, comment = NA, 
 
 # 
 
--   This presentation will show a few examples of Ben Rubin's skill in data science
+This presentation will show a few examples of Ben Rubin's skill in data science
 
 # 
 
@@ -120,7 +120,7 @@ Here is a cool shiny app I made
 ```
 This data comes from the V-Dem Dataset that contains the worlds most comprehensive and detailed democracy ratings. The ratings are based on expert knowledge ranging from low (0.00) to high (1.00).
 
-# 
+# Board Game Data
 
 Check out these tables on board games!
 
@@ -144,4 +144,42 @@ datatable(top_50_details, callback=JS(callback), options = list(
   formatStyle(1:13,color="white")
 ```
 :::
+:::
+
+# 
+
+This is an Interactive graphic of the Best board games
+
+```{r}
+g=top_50_details %>%
+  ggplot(aes(x= logmin, y=average, color = minplayers))+
+  scale_x_continuous(limits=c(1,3))+
+  scale_y_continuous(limits=c(7.5,9))+
+  labs(title= "Ranking vs Minimum Time Required (Top 50)", x = "log Game Time", y = "Average Ranking")
+
+my_gg = g + 
+  geom_point_interactive(aes(tooltip = primary, data_id = id), 
+   hover_nearest = TRUE)
+css_default_hover <- girafe_css_bicolor(primary = "yellow", secondary = "red")
+
+set_girafe_defaults(
+  opts_hover = opts_hover(css = css_default_hover),
+  opts_zoom = opts_zoom(min = 1, max = 4),
+  opts_tooltip = opts_tooltip(css = "padding:3px;background-color:#333333;color:white;"),
+  opts_sizing = opts_sizing(rescale = TRUE),
+  opts_toolbar = opts_toolbar(saveaspng = FALSE, position = "bottom", delay_mouseout = 5000))
+
+girafe(ggobj = my_gg)
+
+```
+
+# New York Times Best sellers
+
+Here is a scatter plot with jitter of the #1 selling books in the past 10 decades, and a bar graph of the authors with the most best sellers.
+
+::: {#fig-books layout-ncol="2"}
+![books](~/git/portfolio_1/images/books_best_sellers.png)
+
+![authors](~/git/portfolio_1/images/authors_best.png)
+books
 :::
