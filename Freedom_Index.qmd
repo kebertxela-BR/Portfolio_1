@@ -24,29 +24,10 @@ fert=fert%>% select(Country,continent) %>% unique()
 
 # World Democracy Index
 
-```{r}
+``` {=html}
 
-vdem=left_join(democracy,fert,by = c('country_name' = 'Country') )
-
-p<- vdem%>%filter(year>=1900) %>% 
-  ggplot(aes(y=v2x_libdem,x=v2x_freexp_altinf, color=continent, frame=year)) +
-  labs(x="Freedom of Expression", y = "Liberal Freedom", 
-       caption = "Vdem data", 
-       color = 'country_name') + 
-  geom_point(aes(text=country_name))+
-  labs(color="Continent")
-
-ggplotly(p)
-
-accumulate_by <- function(dat, var) {
-  var <- lazyeval::f_eval(var, dat)
-  lvls <- plotly:::getLevels(var)
-  dats <- lapply(seq_along(lvls), function(x) {
-    cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
-  })
-  dplyr::bind_rows(dats)
-}
+<iframe height="500" width="100%" frameborder="no" src="https://oettj8-benjamin-rubin.shinyapps.io/freedom_index/"> </iframe>
 
 ```
 
-This data comes from the V-Dem Dataset that contains the worlds most comprehensive and detailed democracy ratings. The ratings are based on expert knowledge range from low (0.00) to high (1.00). Freedom of Expression refers to the extent at which a government allows open media, public discussion of politics, and freedom of academic and cultural expression. Liberal Freedom refers to importance of protecting individual and minority rights against the tyranny of the state and the tyranny of the majority.
+This data comes from the [V-Dem](https://www.v-dem.net/data/the-v-dem-dataset/) Dataset that contains the worlds most comprehensive and detailed democracy ratings. The ratings are based on expert knowledge ranging from low (0.00) to high (1.00). Freedom of Expression refers to the extent at which a government allows open media, public discussion of politics, and freedom of academic and cultural expression. Liberal Freedom refers to importance of protecting individual and minority rights against the tyranny of the state and the tyranny of the majority.
