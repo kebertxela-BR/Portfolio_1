@@ -1,13 +1,13 @@
 ---
-title: "Presentation of Ben"
-author: "Ben Rubin"
-date: 2023-02-18
+title: "Ben Rubin Data Scientist"
+date: 2023-02-27
 format:
   revealjs:
     multiplex: true
     preview-links: true
     theme: moon
     scrollable: true
+    smaller: true
     footer: "Data Science Skills"
     html-math-method: katex
     incremental: true
@@ -106,37 +106,34 @@ knitr::opts_chunk$set(warning = FALSE,message = FALSE, echo=TRUE, comment = NA, 
 
 ## Ben Rubin Data Scientist
 
-## This presentation will show a few examples of Ben Rubin's skills in R programming
+-   I am a Data Scientist with a unique perspective for approaching problems through diverse experience across biochemical engineering, scientific research, and experimental design.
 
-# Shiny App Creation
+-   The following slides will show a few examples of my skills in R programming.
 
-Here is a cool shiny app I made
+## Shiny App Creation {.scrollable}
+
+Here is a shiny app that tracks freedom information for all countries in the world. This data comes from the V-Dem Dataset that contains the worlds most comprehensive and detailed democracy ratings. The ratings are based on expert knowledge ranging from low (0.00) to high (1.00)
 
 ```{=html}
-
 <iframe height="500" width="100%" frameborder="no" src="https://oettj8-benjamin-rubin.shinyapps.io/freedom_index/"> </iframe>
 ```
-This data comes from the V-Dem Dataset that contains the worlds most comprehensive and detailed democracy ratings. The ratings are based on expert knowledge ranging from low (0.00) to high (1.00).
-
 # Board Game Data
 
 Check out these tables on board games!
 
 ::: columns
 ::: {.column width="50%"}
-
 ![](best_games_table1.png)
-
 :::
+
 ::: {.column width="50%"}
-
 ![](best_games_table2.png)
-
 :::
 :::
-You can interact with the table [here.](https://kebertxela-br.quarto.pub/portfolio_1/Board_games1.html)
 
-#
+You can interact with the tables [here.](https://kebertxela-br.quarto.pub/portfolio_1/Board_games1.html)
+
+# 
 
 And here is an Interactive graphic of the Best board games
 
@@ -167,10 +164,8 @@ girafe(ggobj = my_gg)
 
 Here is a scatter plot with jitter of the #1 selling books in the past 10 decades, and a bar graph of the authors with the most best sellers.
 
-::: {#fig-books layout-ncol="2"}
+::: {layout-ncol="2"}
 ![books](books_best_sellers.png)
 
 ![authors](authors_best.png)
-
-books
 :::
