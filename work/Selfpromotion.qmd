@@ -104,13 +104,11 @@ datatable(top_50_details, callback=JS(callback), options = list(
 knitr::opts_chunk$set(warning = FALSE,message = FALSE, echo=TRUE, comment = NA, prompt = FALSE)
 ```
 
-## Works of Ben
+## Ben Rubin Data Scientist
 
-# 
+## This presentation will show a few examples of Ben Rubin's skills in R programming
 
-This presentation will show a few examples of Ben Rubin's skill in data science
-
-# 
+# Shiny App Creation
 
 Here is a cool shiny app I made
 
@@ -126,29 +124,21 @@ Check out these tables on board games!
 
 ::: columns
 ::: {.column width="50%"}
-```{r}
 
-best_ranked_games()
-```
+![](best_games_table1.png)
+
 :::
-
 ::: {.column width="50%"}
-```{r}
 
-datatable(top_50_details, callback=JS(callback), options = list(
-  initComplete = JS(
-    "function(settings, json) {",
-    "$(this.api().table().header()).css({'background-color': '#222', 'color': '#fff'});",
-    "$(this.api().table().container()).css({'background-color': '#222', 'color': '#fff'})",
-    "}"))) %>% 
-  formatStyle(1:13,color="white")
-```
+![](best_games_table2.png)
+
 :::
 :::
+You can interact with the table [here.](https://kebertxela-br.quarto.pub/portfolio_1/Board_games1.html)
 
-# 
+#
 
-This is an Interactive graphic of the Best board games
+And here is an Interactive graphic of the Best board games
 
 ```{r}
 g=top_50_details %>%
@@ -178,8 +168,9 @@ girafe(ggobj = my_gg)
 Here is a scatter plot with jitter of the #1 selling books in the past 10 decades, and a bar graph of the authors with the most best sellers.
 
 ::: {#fig-books layout-ncol="2"}
-![books](~/git/portfolio_1/images/books_best_sellers.png)
+![books](books_best_sellers.png)
 
-![authors](~/git/portfolio_1/images/authors_best.png)
+![authors](authors_best.png)
+
 books
 :::
