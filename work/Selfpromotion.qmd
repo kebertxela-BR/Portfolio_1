@@ -114,7 +114,7 @@ knitr::opts_chunk$set(warning = FALSE,message = FALSE, echo=TRUE, comment = NA, 
 
 Here is a shiny app that tracks freedom information for all countries in the world. This data comes from the V-Dem Dataset that contains the worlds most comprehensive and detailed democracy ratings. The ratings are based on expert knowledge ranging from low (0.00) to high (1.00)
 
-<iframe height="500" width="100%" frameborder="no" src="https://oettj8-benjamin-rubin.shinyapps.io/freedom_index/"> </iframe>
+<iframe height="500" width="100%" frameborder="no" src="https://oettj8-benjamin-rubin.shinyapps.io/freedom_index/"></iframe>
 
 # Board Game Data
 
