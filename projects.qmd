@@ -2,4 +2,8 @@
 title: "Projects"
 ---
 
-there should be something here
+# 
+
+[![World Freedom Index](./projects/freedom_dove.jpg)](./projects/Freedom_Index.qmd)
+
+[![CO2 Emissions around the world.](./projects/planet_earth.jpg)](https://oettj8-benjamin-rubin.shinyapps.io/emissions/)

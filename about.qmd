@@ -1,12 +1,14 @@
 ---
-title: "About Me"
-image: profilepic.jpg
+title: "Ben Rubin"
+image: home_pic2.jpg
 about: 
   template: trestles
 ---
 
-I am Ben Rubin, website creator extraordinaire in training.
+Welcome to my website! My name is Benjamin Rubin, and I am a passionate Data Scientist and Biochemist. With a unique perspective and diverse experience in biochemical engineering, scientific research, and experimental design, I have developed a strong skill set that allows me to approach problems from multiple angles. My education includes a Master of Data Science from Willamette University and a Bachelor of Science in Biochemistry from Western Washington University.
 
-```{r}
+As a data scientist, I have a wide range of technical skills, including SQL, R, Python, statistical analysis, machine learning, and data visualization. As a biochemist, I have extensive experience in assay development, fermentation process development, experimental design, and Flow Cytometry.
 
-```
+Previously I worked as a Research Associate at Absci, LLC, where I have led experimental development for a variety of projects, including the development and execution of a high screening throughput assay that led to an increase in production and platform efficiency. Additionally, I have also trained new employees on data input and documentation and proficiently scheduled projects, experimental reporting, and meeting project deadlines to meet company goals.
+
+In addition to my professional accomplishments, I enjoy staying active in my free time. You can often find me snowboarding in the winter, playing guitar, going on hikes, or trying out new activities to challenge myself. When spending time with friends one of my favorite activities is playing board games.

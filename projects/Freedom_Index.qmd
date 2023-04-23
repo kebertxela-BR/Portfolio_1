@@ -1,0 +1,31 @@
+---
+title: "Freedom Index"
+date: 2023-02-18
+output: html_output
+execute: 
+  echo: true
+  warning: false
+---
+
+```{r, include=FALSE}
+
+library(plotly)
+library(dplyr)
+library(tidyverse)
+
+democracy=readRDS("C:/Users/benru/Documents/2022-2023 school work/archive/Data502/Semester Project/Country-Year V-Dem Full and others/Country_Year_V-Dem_Full+others_R_v12/V-Dem-CY-Full+Others-v12.rds")
+
+fert<-read_csv("https://raw.githubusercontent.com/kitadasmalley/FA2020_DataViz/main/data/gapminderFert.csv") 
+
+fert=fert%>% select(Country,continent) %>% unique()
+
+
+```
+
+# World Democracy Index
+
+```{=html}
+
+<iframe height="500" width="100%" frameborder="no" src="https://oettj8-benjamin-rubin.shinyapps.io/freedom_index/"> </iframe>
+```
+This data comes from the [V-Dem](https://www.v-dem.net/data/the-v-dem-dataset/) Dataset that contains the worlds most comprehensive and detailed democracy ratings. The ratings are based on expert knowledge ranging from low (0.00) to high (1.00). Freedom of Expression refers to the extent at which a government allows open media, public discussion of politics, and freedom of academic and cultural expression. Liberal Freedom refers to importance of protecting individual and minority rights against the tyranny of the state and the tyranny of the majority.

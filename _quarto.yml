@@ -8,9 +8,12 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      - projects.qmd
     right: 
       - icon: linkedin 
         href: https://www.linkedin.com/in/benjaminrubin64
+      - icon: github
+        href: https://github.com/kebertxela-BR
   sidebar:
     style: "docked"
     collapse-level: 1
@@ -18,15 +21,19 @@ website:
     contents:
       - section: "TidyTuesday"
         contents:
-          - NYT_BestSellers.qmd
-          - Board_games1.qmd
-      - section: "Projects"
-        contents: 
-          - Freedom_Index.qmd
-
+          - text: NYT Best Sellers
+            href: ./TidyTuesday/NYT_BestSellers.qmd
+          - text: Board Games!
+            href: ./TidyTuesday/Board_games1.qmd
+      - section: "Published Work"
+        contents:
+          - text: Quantitative Functionalization of the Tyrosine Residues in Silk Fibroin through an Amino-Tyrosine Intermediate.
+            href: https://onlinelibrary.wiley.com/doi/abs/10.1002/macp.202200119
 format:
   html:
-    theme: darkly
+    theme:
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
     code-fold: true

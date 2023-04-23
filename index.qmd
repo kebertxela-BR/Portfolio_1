@@ -2,6 +2,6 @@
 title: "Welcome!"
 ---
 
-Ben Rubin's Portfolio website work in progress.
+Hello and thank you for Checking out my work!
 
-When I get real good at this there's gonna be some cool stuff here.
+![](profilepic.jpg)
