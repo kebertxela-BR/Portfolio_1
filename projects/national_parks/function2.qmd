@@ -1,0 +1,69 @@
+---
+title: "National Park Reservations"
+format:
+  html:
+    theme: darkly
+    css: styles.css
+    toc: true
+    code-fold: true
+    code-summary: "Show the code"
+editor: visual
+---
+
+# National Park revenue
+
+This quarto document contains information from national parks in the US and reservations made.
+
+```{r,message=FALSE, warning=FALSE}
+library(tidyquant)
+library(rmarkdown)
+library(purrr)
+library(tidyverse)
+library(DT)
+library(magrittr)
+
+#campres=read_csv("./2021/FY21 Historical Reservations Full.csv")
+
+#campres <- campres %>%                                        # Create ID by group
+  #group_by(parentlocation) %>%
+  #dplyr::mutate(ID = cur_group_id())
+
+parknames=read_csv("./2021/parknames.csv")
+```
+
+```{r}
+#park.Analyser <- function(x) {
+ # render("./park_template.qmd", 
+  #       params = list(parkparent= x), 
+   #      output_file = paste0("./files/",x,".html"))
+#}
+
+#(unique(campres$ID)) %>% map(., function(x) { park.Analyser(x)})
+```
+
+```{r}
+
+callback <- c(
+  "$('#DataTables_Table_0_length select').css('color', '#fff');",
+  "$('#DataTables_Table_0_filter input').css('color', '#fff');"
+)
+
+
+
+parknames %<>% mutate( 
+                  links=paste0("https://kebertxela-br.github.io/national_parks/",ID,".html", sep=""), 
+                  file=paste0("Report on ",parentlocation,sep="")
+                  ) %>% mutate(Report = paste0('<a  target=_blank href=\'', links, '\' >', file,'</a>' ))
+parknames.Res <- parknames %>% relocate(Report, .after=parentlocation) %>% relocate(regioncode, .after=Report)
+datatable(parknames.Res, 
+          filter="top", 
+          escape=FALSE, 
+          rownames = FALSE, options=list(initComplete = JS(
+    "function(settings, json) {",
+    "$(this.api().table().header()).css({'background-color': '#222', 'color': '#fff'});",
+    "$(this.api().table().container()).css({'background-color': '#222', 'color': '#fff'})",
+    "}"))) %>% formatStyle(1:13,color="white")
+```
+
+```{r}
+```
