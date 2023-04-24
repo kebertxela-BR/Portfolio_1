@@ -6,4 +6,6 @@ title: "Projects"
 
 [![World Freedom Index](./projects/freedom_dove.jpg)](./projects/Freedom_Index.qmd)
 
-[![CO2 Emissions around the world.](./projects/planet_earth.jpg)](https://oettj8-benjamin-rubin.shinyapps.io/emissions/)
+[![CO2 Emissions around the world](./projects/planet_earth.jpg)](https://oettj8-benjamin-rubin.shinyapps.io/emissions/)
+
+[![National Park Reservation Information for 2021](./projects/national_parks/logo.png)](./projects/national_parks/function.qmd)
